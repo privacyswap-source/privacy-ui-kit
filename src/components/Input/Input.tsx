@@ -37,7 +37,7 @@ const Input = styled.input<InputProps>`
   border: 0;
   border-radius: 16px;
   box-shadow: ${getBoxShadow};
-  color: ${({ theme }) => theme.colors.text};
+  color: #000000; // ${({ theme }) => theme.colors.text};
   display: block;
   font-size: 16px;
   height: ${getHeight};

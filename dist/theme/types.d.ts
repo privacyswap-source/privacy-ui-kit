@@ -6,6 +6,7 @@ export declare type MediaQueries = {
     lg: string;
     xl: string;
     nav: string;
+    max: string;
 };
 export declare type Spacing = number[];
 export declare type Radii = {
@@ -26,7 +27,11 @@ export declare type Gradients = {
     bubblegum: string;
 };
 export declare type Colors = {
+    title: string;
+    navBar: string;
+    sideBar: string;
     primary: string;
+    white: string;
     primaryBright: string;
     primaryDark: string;
     secondary: string;
@@ -44,7 +49,6 @@ export declare type Colors = {
     textSubtle: string;
     borderColor: string;
     card: string;
-    heroColor: string;
     gradients: Gradients;
     binance: string;
 };

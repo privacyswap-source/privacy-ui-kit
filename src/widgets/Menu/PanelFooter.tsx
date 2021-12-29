@@ -12,7 +12,6 @@ import MenuButton from "./MenuButton";
 import * as IconModule from "./icons";
 import { socials, MENU_ENTRY_HEIGHT } from "./config";
 import { PanelProps, PushedProps } from "./types";
-import { padding } from "styled-system";
 
 interface Props extends PanelProps, PushedProps {}
 
@@ -22,8 +21,12 @@ const { MoonIcon, SunIcon, LanguageIcon } = Icons;
 const Container = styled.div`
   flex: none;
   padding: 8px 4px;
-  background-color: ${({ theme }) => theme.nav.background};
-  // border-top: solid 2px rgba(133, 133, 133, 0.1);
+  background: ${({ theme }) => theme.colors.sideBar};
+  border-top: solid 2px rgba(133, 133, 133, 0.1);
+  height: 8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 
 const PriceLink = styled.a`
@@ -42,7 +45,7 @@ const PriceLink = styled.a`
 const SettingsEntry = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   height: ${MENU_ENTRY_HEIGHT}px;
   padding: 0 8px;
 `;
@@ -50,7 +53,7 @@ const SettingsEntry = styled.div`
 const SocialEntry = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   height: ${MENU_ENTRY_HEIGHT}px;
   padding: 0 16px;
 `;
@@ -78,42 +81,32 @@ const PanelFooter: React.FC<Props> = ({
 
   return (
     <Container>
-      <SocialEntry>
+      {/* <SocialEntry>
         {cakePriceUsd ? (
-          <PriceLink href={priceLink} target="_blank">
-            <PancakeRoundIcon width="24px" mr="8px" />
-            <Text color="textSubtle" bold>{`$${cakePriceUsd.toFixed(3)}`}</Text>
+          <PriceLink >      href={priceLink} target="_blank" 
+            <PancakeRoundIcon width="42px" mr="8px" />
+            <Text color="textSubtle" bold fontSize="2rem">{`$${cakePriceUsd.toFixed(3)}`}</Text>
           </PriceLink>
         ) : (
           <Skeleton width={80} height={24} />
         )}
-        {/* <Dropdown
-          position="top-right"
-          target={
-            <Button variant="text" style={{ padding: "10px" }} >
-              <Text style={{ fontSize: "22px" }} color="textSubtle">{currentLang?.toUpperCase()}</Text>
-            </Button>
-          }
-        > */}
-        {/* startIcon={<LanguageIcon color="textSubtle" width="33px" />} */}
-        {/* {langs.map((lang) => (
-            <MenuButton
-              key={lang.code}
-              fullWidth
-              onClick={() => setLang(lang)}
-              // Safari fix
-              style={{ minHeight: "32px", height: "auto" }}
-            >
-              {lang.language}
-            </MenuButton>
-          ))}
-        </Dropdown> */}
-      </SocialEntry>
+     
+      </SocialEntry> */}
       <SettingsEntry>
-        <Flex>
+        <Button style={{padding:"0rem 0.8rem 0rem 0.8rem"}} variant="text" onClick={() => toggleTheme(!isDark)}>
+          {/* alignItems center is a Safari fix */}
+          <Flex alignItems="center">
+            <SunIcon  color={isDark ? "textDisabled" : "text"} width="24px" />
+            <Text color="textDisabled" mx="4px">
+              /
+            </Text>
+            <MoonIcon color={isDark ? "text" : "textDisabled"} width="24px" />
+          </Flex>
+        </Button>
+        {/* <Flex>
           {socials.map((social, index) => {
             const Icon = Icons[social.icon];
-            const iconProps = { width: "40px", color: "textSubtle", style: { cursor: "pointer" } };
+            const iconProps = { width: "32px", color: "textSubtle", style: { cursor: "pointer" } };
             const mr = index < socials.length - 1 ? "8px" : 0;
             // if (social.items) {
             //   return (
@@ -132,23 +125,12 @@ const PanelFooter: React.FC<Props> = ({
               </Link>
             );
           })}
-        </Flex>
-        {/* <Button variant="text" onClick={() => toggleTheme(!isDark)}>
-          <Flex alignItems="center">
-            <SunIcon color={isDark ? "textDisabled" : "text"} width="24px" />
-            <Text color="textDisabled" mx="4px">
-              /
-            </Text>
-            <MoonIcon color={isDark ? "text" : "textDisabled"} width="24px" />
-          </Flex>
-        </Button> */}
-      </SettingsEntry>
-      <div>
+        </Flex> */}
         {/* <Dropdown
           position="top-right"
           target={
-            <Button variant="text" style={{padding:"2px"}} startIcon={<LanguageIcon color="textSubtle" width="33px" />}>
-              <Text style={{fontSize:"22px"}} color="textSubtle">{currentLang?.toUpperCase()}</Text>
+            <Button variant="text" startIcon={<LanguageIcon color="textSubtle" width="24px" />}>
+              <Text color="textSubtle">{currentLang?.toUpperCase()}</Text>
             </Button>
           }
         >
@@ -164,7 +146,7 @@ const PanelFooter: React.FC<Props> = ({
             </MenuButton>
           ))}
         </Dropdown> */}
-      </div>
+      </SettingsEntry>
     </Container>
   );
 };

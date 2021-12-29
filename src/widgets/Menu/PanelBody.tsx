@@ -20,7 +20,8 @@ const Container = styled.div`
   overflow-y: auto;
   overflow-x: hidden;
   height: 100%;
-  paddin-left: 20px;
+  padding: 2rem  0 0 0;
+  // align-items: center;
 `;
 
 const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links }) => {
@@ -38,41 +39,28 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links }) => {
 
         if (entry.items) {
           return (
-            <div>
-              <Accordion
-                key={entry.label}
-                isPushed={isPushed}
-                pushNav={pushNav}
-                icon={iconElement}
-                label={entry.label}
-                initialOpenState={entry.initialOpenState}
-                className={calloutClass}
-              >
-                {isPushed &&
-                  entry.items.map((item) => (
-                    <MenuEntry
-                      key={item.href}
-                      secondary
-                      isActive={item.href === location.pathname}
-                      onClick={handleClick}
-                    >
-                      <MenuLink href={item.href}>{item.label}</MenuLink>
-                    </MenuEntry>
-                  ))}
-              </Accordion>
-            </div>
+            <Accordion
+              key={entry.label}
+              isPushed={isPushed}
+              pushNav={pushNav}
+              icon={iconElement}
+              label={entry.label}
+              initialOpenState={entry.initialOpenState}
+              className={calloutClass}
+            >
+              {isPushed &&
+                entry.items.map((item) => (   // Here background Accordation //
+                  <MenuEntry key={item.href} style={{backgroundColor:"rgb(39, 43, 47)"}} secondary isActive={item.href === location.pathname} onClick={handleClick}>
+                    <MenuLink href={item.href}>{item.label}</MenuLink>
+                  </MenuEntry>
+                ))}
+            </Accordion>
           );
         }
         return (
-          <MenuEntry
-            isPushed={isPushed}
-            key={entry.label}
-            isActive={entry.href === location.pathname}
-            className={calloutClass}
-          >
+          <MenuEntry key={entry.label} isActive={entry.href === location.pathname} className={calloutClass}>
             <MenuLink href={entry.href} onClick={handleClick}>
               {iconElement}
-              {/* {console.log(isPushed,"isPushed")} */}
               <LinkLabel isPushed={isPushed}>{entry.label}</LinkLabel>
             </MenuLink>
           </MenuEntry>

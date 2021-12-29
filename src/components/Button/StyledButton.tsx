@@ -19,7 +19,7 @@ const getDisabledStyles = ({ isLoading, theme }: ThemedProps) => {
   return `
     &:disabled,
     &.button--disabled {
-      background-color: ${theme.colors.backgroundDisabled};
+      background: ${theme.colors.backgroundDisabled};
       border-color: ${theme.colors.backgroundDisabled};
       box-shadow: none;
       color: ${theme.colors.textDisabled};
@@ -47,9 +47,9 @@ const getButtonVariantProp = (prop: keyof ButtonThemeVariant) => ({
 
 const StyledButton = styled.button<ButtonProps>`
   align-items: center;
-  background-color: ${getButtonVariantProp("background")};
+  background: ${getButtonVariantProp("background")};
   border: ${getButtonVariantProp("border")};
-  border-radius: 0px;
+  border-radius: ${({ size }) => (size === "sm" ? "12px" : "16px")};
   box-shadow: ${getButtonVariantProp("boxShadow")};
   color: ${getButtonVariantProp("color")};
   cursor: pointer;
@@ -69,16 +69,58 @@ const StyledButton = styled.button<ButtonProps>`
   opacity: ${({ isLoading }) => (isLoading ? 0.5 : 1)};
 
   &:hover:not(:disabled):not(.button--disabled):not(:active) {
-    background-color: ${({ theme }) => theme.colors.background};
+    background: ${getButtonVariantProp("backgroundHover")};
     border-color: ${getButtonVariantProp("borderColorHover")};
   }
 
-  &:focus:not(:active) {
-    box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.secondary};
+
+
+
+  
+
+
+  
+    // display: inline-block;
+    // vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: box-shadow;
+    transition-property: box-shadow;
+  
+  &:hover, &:focus, &:active {
+    box-shadow: 0 0 1.1rem ${getButtonVariantProp("backgroundHover")};
   }
+  
+  
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    transition-duration: 0.3s;
+    transition-property: transform;
+
+
+&:hover,
+&:focus,
+&:active {
+    transform: scale(1.1);
+}
+
+
+
+
+
+  
+
+  // &:focus:not(:active) {
+  //   box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.secondary};
+  // }
 
   &:active {
-    background-color: ${getButtonVariantProp("backgroundActive")};
+    background: ${getButtonVariantProp("backgroundActive")};
     box-shadow: ${getButtonVariantProp("boxShadowActive")};
   }
 

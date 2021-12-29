@@ -22,7 +22,7 @@ export const light: ButtonTheme = {
     borderColorHover: lightColors.primaryBright,
     boxShadow: "none",
     boxShadowActive: "none",
-    color: lightColors.primary,
+    color: lightColors.secondary,
   },
   [TERTIARY]: {
     background: lightColors.tertiary,
@@ -32,7 +32,7 @@ export const light: ButtonTheme = {
     borderColorHover: "currentColor",
     boxShadow: "none",
     boxShadowActive: "none",
-    color: lightColors.primary,
+    color: lightColors.secondary,
   },
   [TEXT]: {
     background: "transparent",
@@ -42,12 +42,12 @@ export const light: ButtonTheme = {
     borderColorHover: "currentColor",
     boxShadow: "none",
     boxShadowActive: "none",
-    color: lightColors.primary,
+    color: lightColors.secondary,
   },
   [DANGER]: {
     background: lightColors.failure,
-    backgroundActive: lightColors.tertiary, // darkten 10%
-    backgroundHover: lightColors.tertiary, // lighten 10%
+    backgroundActive: "#D43285", // darkten 10%
+    backgroundHover: "#FF65B8", // lighten 10%
     border: 0,
     borderColorHover: "currentColor",
     boxShadow: "none",

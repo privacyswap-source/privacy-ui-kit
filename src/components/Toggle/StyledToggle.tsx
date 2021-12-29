@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
 export const Handle = styled.div`
-  background-color: ${({ theme }) => theme.toggle.handleBackground};
+  background-color: 	#808080; ${({ theme }) => theme.toggle.handleBackground};
   border-radius: 50%;
   cursor: pointer;
   height: 32px;
-  left: 4px;
+  // left: 4px;
   position: absolute;
-  top: 4px;
+  // top: 4px;
   transition: left 200ms ease-in;
   width: 32px;
   z-index: 1;
@@ -36,15 +36,15 @@ export const Input = styled.input`
 
 const StyledToggle = styled.div<{ checked: boolean }>`
   align-items: center;
-  background-color: ${({ theme, checked }) => theme.colors[checked ? "success" : "textSubtle"]};
+  background-color: ${({ theme, checked }) => theme.colors[checked ? "success" : "white"]};
   border-radius: 24px;
   box-shadow: ${({ theme }) => theme.shadows.inset};
   cursor: pointer;
   display: inline-flex;
-  height: 40px;
+  height: 20px;
   position: relative;
   transition: background-color 200ms;
-  width: 72px;
+  width: 65px;
 `;
 
 export default StyledToggle;

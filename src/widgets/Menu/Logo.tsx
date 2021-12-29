@@ -16,17 +16,22 @@ interface Props {
 const StyledLink = styled(Link)`
   display: flex;
   align-items: center;
+
   .mobile-icon {
-    width: 32px;
-    ${({ theme }) => theme.mediaQueries.nav} {
-      display: none;
-    }
-  }
-  .desktop-icon {
-    width: 156px;
     display: none;
-    ${({ theme }) => theme.mediaQueries.nav} {
-      display: block;
+    // @media only screen and (max-width: 768px) {     
+      
+    //   width: 52px;
+    // }
+  }
+
+
+  .desktop-icon {
+    width: 130px;
+    
+    display: block;
+    @media only screen and (max-width: 768px) {
+      display: none;
     }
   }
 `;
@@ -42,13 +47,7 @@ const Logo: React.FC<Props> = ({ isPushed, togglePush, isDark, href }) => {
 
   return (
     <Flex>
-      <MenuButton aria-label="Toggle menu" onClick={togglePush} mr="24px">
-        {isPushed ? (
-          <HamburgerCloseIcon width="24px" color="textSubtle" />
-        ) : (
-          <HamburgerIcon width="24px" color="textSubtle" />
-        )}
-      </MenuButton>
+      
       {isAbsoluteUrl ? (
         <StyledLink as="a" href={href} aria-label="Pancake home page">
           {innerLogo}
@@ -58,6 +57,14 @@ const Logo: React.FC<Props> = ({ isPushed, togglePush, isDark, href }) => {
           {innerLogo}
         </StyledLink>
       )}
+      <MenuButton aria-label="Toggle menu" onClick={togglePush} mr="24px">
+        {isPushed ? (
+          <HamburgerCloseIcon width="24px"  />
+        ) : (
+          <HamburgerIcon width="24px" color="#E8BB4E" />
+        )}
+      </MenuButton>
+      
     </Flex>
   );
 };

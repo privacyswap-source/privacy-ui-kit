@@ -7,6 +7,7 @@ export type MediaQueries = {
   lg: string;
   xl: string;
   nav: string;
+  max: string;
 };
 
 export type Spacing = number[];
@@ -32,7 +33,11 @@ export type Gradients = {
 };
 
 export type Colors = {
+  title: string;
+  navBar: string;
+  sideBar: string;
   primary: string;
+  white: string;
   primaryBright: string;
   primaryDark: string;
   secondary: string;
@@ -50,7 +55,7 @@ export type Colors = {
   textSubtle: string;
   borderColor: string;
   card: string;
-  heroColor: string;
+
   // Gradients
   gradients: Gradients;
 

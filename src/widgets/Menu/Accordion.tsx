@@ -27,7 +27,7 @@ const AccordionContent = styled.div<{ isOpen: boolean; isPushed: boolean; maxHei
   border-color: ${({ isOpen, isPushed }) => (isOpen && isPushed ? "rgba(133, 133, 133, 0.1)" : "transparent")};
   border-style: solid;
   border-width: 1px;
-  padding: ${({ isPushed }) => (isPushed ? "0 50px" : "0 16px")};
+  padding: 0 ; // ${({ isPushed }) => (isPushed ? "0 25px" : "0 16px")};
 `;
 
 const Accordion: React.FC<Props> = ({
@@ -52,7 +52,7 @@ const Accordion: React.FC<Props> = ({
 
   return (
     <Container>
-      <MenuEntry style={{ padding: `${isPushed ? "0 50px" : "0 16px"}` }} onClick={handleClick} className={className}>
+      <MenuEntry  onClick={handleClick} className={className}>
         {icon}
         <LinkLabel isPushed={isPushed}>{label}</LinkLabel>
         {isOpen ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
